@@ -13,21 +13,47 @@ namespace TechJobsPersistentAutograded.Controllers
 {
     public class EmployerController : Controller
     {
+        //setup a private JobRepository variable to perform CRUD operations on the database and pass into EmployerController constructor
+        private JobRepository jobRepository;
+        public EmployerController(JobRepository jobRepository)
+        {
+            this.jobRepository = jobRepository;
+        }
 
         // GET: /<controller>/
+        //passes all of the Employer objects in the database to the view
         public IActionResult Index()
         {
-            return View();
+            IEnumerable<Employer> employers = jobRepository.GetAllEmployers();
+            
+            return View(employers);
         }
 
+        //Create an instance of AddEmployerViewModel inside of the Add() method and pass the instance into the View() return method
         public IActionResult Add()
         {
-            return View();
+            AddEmployerViewModel addEmployerViewModel = new AddEmployerViewModel();
+            
+            return View(addEmployerViewModel);
         }
 
-        public IActionResult ProcessAddEmployerForm()
+
+        public IActionResult ProcessAddEmployerForm(AddEmployerViewModel addEmployerViewModel)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                Employer employer = new Employer();
+                {
+                    Name = addEmployerViewModel.Name;
+                    Location = addEmployerViewModel.Location;
+                };
+                jobRepository.AddNewEmployer(employer);
+                jobRepository.SaveChanges();
+
+                return Redirect("/Employer");
+            }
+            
+            return View(addEmployerViewModel);
         }
 
         public IActionResult About(int id)
