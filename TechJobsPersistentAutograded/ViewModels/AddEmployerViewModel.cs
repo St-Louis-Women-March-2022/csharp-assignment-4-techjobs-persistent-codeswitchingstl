@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using TechJobsPersistentAutograded.Models;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace TechJobsPersistentAutograded.ViewModels
 {
@@ -14,9 +10,14 @@ namespace TechJobsPersistentAutograded.ViewModels
         [Required(ErrorMessage = "Employer location is required")]
         public string Location { get; set; }
 
+        public AddEmployerViewModel(string name, string location)
+        {
+            Name = name;
+            Location = location;
+        }
+
         public AddEmployerViewModel()
         {
         }
     }
 }
-
