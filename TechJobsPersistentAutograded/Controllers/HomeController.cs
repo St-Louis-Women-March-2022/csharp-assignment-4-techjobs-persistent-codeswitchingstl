@@ -41,16 +41,15 @@ namespace TechJobsPersistentAutograded.Controllers
             return View(addJobViewModel);
         }
 
-        [HttpPost]
         public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel)
         {
             if (ModelState.IsValid)
             {
                 Job job = new Job
                 {
-                    Name = addJobViewModel.Name
+                    Name = addJobViewModel.Name,
+                    EmployerId = addJobViewModel.EmployerId
                 };
-                job.EmployerId = addJobViewModel.EmployerId;
                 _repo.AddNewJob(job);
                 _repo.SaveChanges();
                 
