@@ -37,15 +37,15 @@ namespace TechJobsPersistentAutograded.Controllers
             return View(addEmployerViewModel);
         }
 
-
+        [HttpPost]
         public IActionResult ProcessAddEmployerForm(AddEmployerViewModel addEmployerViewModel)
         {
             if (ModelState.IsValid)
             {
-                Employer employer = new Employer();
+                Employer employer = new Employer
                 {
-                    Name = addEmployerViewModel.Name;
-                    Location = addEmployerViewModel.Location;
+                    Name = addEmployerViewModel.Name,
+                    Location = addEmployerViewModel.Location
                 };
                 jobRepository.AddNewEmployer(employer);
                 jobRepository.SaveChanges();
@@ -56,9 +56,12 @@ namespace TechJobsPersistentAutograded.Controllers
             return View(addEmployerViewModel);
         }
 
+        //Make sure that the method is actually passing an Employer object to the view for display.
         public IActionResult About(int id)
         {
-            return View();
+            Employer employer = jobRepository.FindEmployerById(id);
+            
+            return View(employer);
         }
     }
 }
