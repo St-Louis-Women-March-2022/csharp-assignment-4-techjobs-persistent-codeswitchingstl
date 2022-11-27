@@ -9,26 +9,10 @@ namespace TechJobsPersistentAutograded.ViewModels
     public class AddEmployerViewModel
     {
         [Required(ErrorMessage = "Employer name is required")]
-        public string EmployerName { get; set; }
+        public string Name { get; set; }
 
-        [Required(ErrorMessage = "EMployer location is required")]
-        public string EmployerLocation { get; set; }
-
-        /*public AddEmployerViewModel(Job theJob, List<Skill> possibleSkills)
-        {
-            Skills = new List<SelectListItem>();
-
-            foreach (var skill in possibleSkills)
-            {
-                Skills.Add(new SelectListItem
-                {
-                    Value = skill.Id.ToString(),
-                    Text = skill.Name
-                });
-            }
-
-            Job = theJob;
-        }*/
+        [Required(ErrorMessage = "Employer location is required")]
+        public string Location { get; set; }
 
         public AddEmployerViewModel()
         {
