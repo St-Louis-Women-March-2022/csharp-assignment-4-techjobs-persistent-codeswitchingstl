@@ -5,5 +5,6 @@
 --Skills table has columns Id, Name and Description.
 
 --Part 2
+--Employers in Saint Louis: Bayer, Centene, BJC, World Wide Technology, Stifel
 
 --Part 3
