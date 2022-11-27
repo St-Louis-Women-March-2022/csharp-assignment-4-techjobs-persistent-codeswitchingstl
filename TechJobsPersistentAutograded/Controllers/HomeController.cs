@@ -41,7 +41,7 @@ namespace TechJobsPersistentAutograded.Controllers
             return View(addJobViewModel);
         }
 
-
+        [HttpPost]
         public IActionResult ProcessAddJobForm(AddJobViewModel addJobViewModel)
         {
             if (ModelState.IsValid)

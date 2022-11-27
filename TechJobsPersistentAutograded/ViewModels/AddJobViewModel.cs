@@ -6,6 +6,7 @@ using TechJobsPersistentAutograded.Models;
 
 namespace TechJobsPersistentAutograded.ViewModels
 {
+    //Create a new ViewModel called AddJobViewModel. You will need properties for the job’s name, the selected employer’s ID, and a list of all employers as SelectListItem.
     public class AddJobViewModel
     {
         [Required(ErrorMessage = "Job name is required")]
