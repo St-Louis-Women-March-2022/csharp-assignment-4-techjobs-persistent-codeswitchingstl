@@ -8,3 +8,5 @@
 --Employers in Saint Louis: Bayer, Centene, BJC, World Wide Technology, Stifel
 
 --Part 3
+--Next line is a query that will return a list of names and descriptions of all skills
+--SELECT * FROM techjobs.skills;

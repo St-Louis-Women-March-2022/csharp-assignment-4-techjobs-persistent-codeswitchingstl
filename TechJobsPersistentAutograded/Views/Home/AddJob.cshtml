@@ -5,6 +5,7 @@
 
 <form asp-controller="Home" asp-action="ProcessAddJobForm" method="post">
 
+    @*inputting job title*@
     <div class="form-group">
 
         <label>Job Title</label>
@@ -12,6 +13,7 @@
         <span asp-validation-for="Name"></span>
     </div>
 
+    @*selecting employer*@
     <div class="form-group">
         <label asp-for="EmployerId">Employer Name</label>
         <select asp-for="EmployerId" asp-items="@Model.Employers" class="form-control"></select>
@@ -19,6 +21,23 @@
             <a asp-controller="Employer" asp-action="Add">Add Employer</a>
         </p>
     </div>
+
+    @*selecting job skills via checkbox(es)*@
+    <div class="form-group">
+        <label asp-for="Id">Job Skills</label>
+          @foreach(SelectListItem item in @Model.JobSkills)
+            {
+                <li>
+                    <input type="checkbox" name="selectedSkills" value=@item.Value />@item.Text
+                </li>
+            }
+
+        @*Add a link to the form to add skills to the database so if a user doesn’t see the skills they need, they can add skills themselves!*@
+        <p>
+            <a asp-controller="Skill" asp-action="Add">Add Skill</a>
+        </p>
+    </div>
+
     <p></p>
     <input type="submit" value="Add Job" />
 
