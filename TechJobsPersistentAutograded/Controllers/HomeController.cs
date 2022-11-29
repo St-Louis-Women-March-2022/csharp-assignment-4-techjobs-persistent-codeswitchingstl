@@ -38,8 +38,9 @@ namespace TechJobsPersistentAutograded.Controllers
         {
             //In AddJob() pass an instance of AddJobViewModel to the view.
             List<Employer> employers = _repo.GetAllEmployers().ToList();
+            List<Skill> skills= _repo.GetAllSkills().ToList();
 
-            AddJobViewModel addJobViewModel = new AddJobViewModel(employers);
+            AddJobViewModel addJobViewModel = new AddJobViewModel(employers, skills);
             return View(addJobViewModel);
         }
 
